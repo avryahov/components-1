@@ -5,20 +5,28 @@ function App() {
     const [value, setValue] = useState('')
     const [error, setError] = useState('')
     const [list, setList] = useState([])
+    let isValueValid = false;
 
     const onInputButtonClick = () => {
         const promptValue = prompt("Введите значение")
-        setValue(promptValue)
+        isValueValid = promptValue?.trim().length > 3
+        if (isValueValid) {
+            setError("")
+            setValue(promptValue.trim())
+        } else {
+            setError("Введенное значение должно содержать минимум 3 символа")
+            setValue("")
+        }
     }
     return (
             <div className={styles.app}>
                 <h1 className={styles['page-heading']}>Ввод значения</h1>
                 <p className={styles['no-margin-text']}>
-                    Текущее значение <code>{value}</code>: "
-                    <output className={styles['current-value']}></output>
+                    Текущее значение <code>value</code>: "
+                    <output className={styles['current-value']}>{value}</output>
                     "
                 </p>
-                <div className="error">Введенное значение должно содержать минимум 3 символа</div>
+                {error && <div className={styles.error}>{error}</div>}
                 <div className={styles['buttons-container']}>
                     <button className="button" onClick={onInputButtonClick}>Ввести новое</button>
                     <button className="button" disabled>Добавить в список</button>
@@ -27,7 +35,7 @@ function App() {
                     <h2 className={styles['list-heading']}>Список:</h2>
                     <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
                     <div className={styles['list-wrapper']}>
-                        <ul className="list">
+                        <ul className={styles.list}>
                             <li className={styles['list-item']}>Первый элемент</li>
                         </ul>
                     </div>
