@@ -18,6 +18,19 @@ function App() {
             setValue("")
         }
     }
+
+    const onAddButtonClick = () => {
+        if (isValueValid) {
+            const newItem = {
+                id: Date.now(),
+                value: value,
+            }
+            setError("")
+            setValue("")
+            setList((prevList) => [...prevList, newItem])
+        }
+    }
+
     return (
             <div className={styles.app}>
                 <h1 className={styles['page-heading']}>Ввод значения</h1>
@@ -29,14 +42,18 @@ function App() {
                 {error && <div className={styles.error}>{error}</div>}
                 <div className={styles['buttons-container']}>
                     <button className={styles.button} onClick={onInputButtonClick}>Ввести новое</button>
-                    <button className={styles.button} disabled={!isValueValid}>Добавить в список</button>
+                    <button className={styles.button} disabled={!isValueValid} onClick={onAddButtonClick}>Добавить в
+                        список
+                    </button>
                 </div>
                 <div className={styles['list-container']}>
                     <h2 className={styles['list-heading']}>Список:</h2>
                     <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
                     <div className={styles['list-wrapper']}>
                         <ul className={styles.list}>
-                            <li className={styles['list-item']}>Первый элемент</li>
+                            {list.map((item) => (
+                                    <li className={styles['list-item']} key={item.id}>{item.value}</li>
+                            ))}
                         </ul>
                     </div>
                 </div>
