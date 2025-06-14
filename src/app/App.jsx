@@ -6,6 +6,10 @@ function App() {
     const [error, setError] = useState('')
     const [list, setList] = useState([])
 
+    const onInputButtonClick = () => {
+        const promptValue = prompt("Введите значение")
+        setValue(promptValue)
+    }
     return (
             <div className={styles.app}>
                 <h1 className={styles['page-heading']}>Ввод значения</h1>
@@ -16,7 +20,7 @@ function App() {
                 </p>
                 <div className="error">Введенное значение должно содержать минимум 3 символа</div>
                 <div className={styles['buttons-container']}>
-                    <button className="button">Ввести новое</button>
+                    <button className="button" onClick={onInputButtonClick}>Ввести новое</button>
                     <button className="button" disabled>Добавить в список</button>
                 </div>
                 <div className={styles['list-container']}>
