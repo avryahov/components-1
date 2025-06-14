@@ -1,4 +1,4 @@
-import styles from './app.module.css'
+import s from './app.module.css'
 import {useState} from "react";
 
 function App() {
@@ -33,27 +33,27 @@ function App() {
     }
 
     return (
-            <div className={styles.app}>
-                <h1 className={styles['page-heading']}>Ввод значения</h1>
-                <p className={styles['no-margin-text']}>
+            <div className={s.app}>
+                <h1 className={s['page-heading']}>Ввод значения</h1>
+                <p className={s['no-margin-text']}>
                     Текущее значение <code>value</code>: "
-                    <output className={styles['current-value']}>{value}</output>
+                    <output className={s['current-value']}>{value}</output>
                     "
                 </p>
-                {error && <div className={styles.error}>{error}</div>}
-                <div className={styles['buttons-container']}>
-                    <button className={styles.button} onClick={onInputButtonClick}>Ввести новое</button>
-                    <button className={styles.button} disabled={!isValueValid} onClick={onAddButtonClick}>Добавить в
+                {error && <div className={s.error}>{error}</div>}
+                <div className={s['buttons-container']}>
+                    <button className={s.button} onClick={onInputButtonClick}>Ввести новое</button>
+                    <button className={s.button} disabled={!isValueValid} onClick={onAddButtonClick}>Добавить в
                         список
                     </button>
                 </div>
-                <div className={styles['list-container']}>
-                    <h2 className={styles['list-heading']}>Список:</h2>
-                    {list?.length > 0 ? <ul className={styles.list}>
+                <div className={s['list-container']}>
+                    <h2 className={s['list-heading']}>Список:</h2>
+                    {list?.length > 0 ? <ul className={s.list}>
                         {list.map((item) => (
-                                <li className={styles['list-item']} key={item.id}>{item.value} — {item.createdAt}</li>
+                                <li className={s['list-item']} key={item.id}>{item.value} — {item.createdAt}</li>
                         ))}
-                    </ul> : <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
+                    </ul> : <p className={s['no-margin-text']}>Нет добавленных элементов</p>
                     }
                 </div>
             </div>
