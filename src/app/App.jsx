@@ -5,12 +5,12 @@ function App() {
     const [value, setValue] = useState('')
     const [error, setError] = useState('')
     const [list, setList] = useState([])
-    let isValueValid = false;
+
+    const isValueValid = value?.trim().length >= 3;
 
     const onInputButtonClick = () => {
         const promptValue = prompt("Введите значение")
-        isValueValid = promptValue?.trim().length > 3
-        if (isValueValid) {
+        if (promptValue?.trim().length >= 3) {
             setError("")
             setValue(promptValue.trim())
         } else {
@@ -48,14 +48,12 @@ function App() {
                 </div>
                 <div className={styles['list-container']}>
                     <h2 className={styles['list-heading']}>Список:</h2>
-                    <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
-                    <div className={styles['list-wrapper']}>
-                        <ul className={styles.list}>
-                            {list.map((item) => (
-                                    <li className={styles['list-item']} key={item.id}>{item.value}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    {list?.length > 0 ? <ul className={styles.list}>
+                        {list.map((item) => (
+                                <li className={styles['list-item']} key={item.id}>{item.value}</li>
+                        ))}
+                    </ul> : <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
+                    }
                 </div>
             </div>
     )
