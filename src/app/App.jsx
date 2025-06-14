@@ -24,6 +24,7 @@ function App() {
             const newItem = {
                 id: Date.now(),
                 value: value,
+                createdAt: new Date().toLocaleDateString("ru-RU"),
             }
             setError("")
             setValue("")
@@ -50,7 +51,7 @@ function App() {
                     <h2 className={styles['list-heading']}>Список:</h2>
                     {list?.length > 0 ? <ul className={styles.list}>
                         {list.map((item) => (
-                                <li className={styles['list-item']} key={item.id}>{item.value}</li>
+                                <li className={styles['list-item']} key={item.id}>{item.value} — {item.createdAt}</li>
                         ))}
                     </ul> : <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
                     }
