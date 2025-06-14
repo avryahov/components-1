@@ -1,12 +1,16 @@
-import './app.module.css'
 import styles from './app.module.css'
+import {useState} from "react";
 
 function App() {
+    const [value, setValue] = useState('')
+    const [error, setError] = useState('')
+    const [list, setList] = useState([])
+
     return (
             <div className={styles.app}>
                 <h1 className={styles['page-heading']}>Ввод значения</h1>
                 <p className={styles['no-margin-text']}>
-                    Текущее значение <code>value</code>: "
+                    Текущее значение <code>{value}</code>: "
                     <output className={styles['current-value']}></output>
                     "
                 </p>
