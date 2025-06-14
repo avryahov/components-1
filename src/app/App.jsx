@@ -18,9 +18,11 @@ function App() {
                 <div className={styles['list-container']}>
                     <h2 className={styles['list-heading']}>Список:</h2>
                     <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
-                    <ul className="list">
-                        <li className={styles['list-item']}>Первый элемент</li>
-                    </ul>
+                    <div className={styles['list-wrapper']}>
+                        <ul className="list">
+                            <li className={styles['list-item']}>Первый элемент</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
     )

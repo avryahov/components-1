@@ -41,6 +41,12 @@
     margin: 0 0 0.5rem;
 }
 
+.list-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .list {
     text-align: left;
     margin: 0 auto;
