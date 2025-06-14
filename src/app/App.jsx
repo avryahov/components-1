@@ -28,8 +28,8 @@ function App() {
                 </p>
                 {error && <div className={styles.error}>{error}</div>}
                 <div className={styles['buttons-container']}>
-                    <button className="button" onClick={onInputButtonClick}>Ввести новое</button>
-                    <button className="button" disabled>Добавить в список</button>
+                    <button className={styles.button} onClick={onInputButtonClick}>Ввести новое</button>
+                    <button className={styles.button} disabled={!isValueValid}>Добавить в список</button>
                 </div>
                 <div className={styles['list-container']}>
                     <h2 className={styles['list-heading']}>Список:</h2>
